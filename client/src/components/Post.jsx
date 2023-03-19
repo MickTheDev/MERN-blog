@@ -1,32 +1,32 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { formatISO9075 } from 'date-fns';
 
-const Post = () => {
+const Post = ({ _id, title, summary, content, cover, createdAt, author }) => {
   return (
     <div className='post'>
       <div className='image'>
-        <img
-          src='https://www.tabou.pl/wp-content/uploads/2022/11/jazda-na-rowerze-mtb-gorskim.jpg'
-          alt=''
-        />
+        <Link to={`/post/${_id}`}>
+          <img
+            src={`http://localhost:4000/${cover}`}
+            alt=''
+          />
+        </Link>
       </div>
       <div className='texts'>
-        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing.</h2>
+        <Link to={`/post/${_id}`}>
+          <h2>{title}</h2>
+        </Link>
         <p className='info'>
           <a
             href=''
             className='author'
           >
-            Michał Siewierski
+            {author.username}
           </a>
-          <time>2023-02-18 12:12</time>
+          <time>{formatISO9075(new Date(createdAt))}</time>
         </p>
-        <p className='summary'>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam esse
-          velit ea, consequatur sed iusto tenetur reprehenderit sit corrupti,
-          quia et nisi, nulla maiores itaque. Quibusdam placeat harum architecto
-          incidunt aspernatur error ratione at laborum autem officiis, neque
-          unde adipisci?
-        </p>
+        <p className='summary'>{summary}</p>
       </div>
     </div>
   );
