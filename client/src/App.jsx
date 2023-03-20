@@ -6,6 +6,7 @@ import {
   LoginPage,
   RegisterPage,
   PostPage,
+  EditPost,
 } from './pages';
 
 import { Routes, Route } from 'react-router-dom';
@@ -38,6 +39,10 @@ function App() {
           <Route
             path='/post/:id'
             element={<PostPage />}
+          />
+          <Route
+            path='/edit/:id'
+            element={<EditPost />}
           />
         </Route>
       </Routes>
